@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttm.pet.dao.CustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ttm.pet.model.dto.Customer">
+        <id column="id" property="id" />
+        <result column="uuid" property="uuid" />
+        <result column="pet_number" property="petNumber" />
+        <result column="name" property="name" />
+        <result column="mobile" property="mobile" />
+        <result column="password" property="password" />
+        <result column="gender" property="gender" />
+        <result column="age" property="age" />
+        <result column="portrait" property="portrait" />
+        <result column="wxUnionId" property="wxUnionId" />
+        <result column="profile" property="profile" />
+        <result column="back_img" property="backImg" />
+        <result column="remark" property="remark" />
+        <result column="create_time" property="createTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, uuid, pet_number, name, mobile, password, gender, age, portrait, wxUnionId, profile, back_img, remark, create_time, deleted
+    </sql>
+
+</mapper>

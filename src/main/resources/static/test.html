@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function crosRequest(){
+            $.ajax({
+                url:'http://localhost:8081/czx/banner/upload.do',
+                // url:'http://localhost:8080/CZX/api/upload.do',
+                // url:'http://www.tobetibetan.com/CZX/api/upload.do',
+                type:'post',
+                dataType:'json',
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<button onclick="crosRequest()">请求跨域资源</button>
+</body>
+</html>
