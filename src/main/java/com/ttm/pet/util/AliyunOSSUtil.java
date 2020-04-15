@@ -7,6 +7,7 @@ import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.common.utils.IOUtils;
 import com.aliyun.oss.model.*;
 import com.ttm.pet.config.OssConstantConfig;
+import com.ttm.pet.enums.PathEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,13 +20,12 @@ public class AliyunOSSUtil {
     private final static Logger logger = LoggerFactory.getLogger(AliyunOSSUtil.class);
 
 
-    public static String upload(MultipartFile file,String filePath,boolean isWatermark){
+    public static String upload(MultipartFile file,String filePath){
         logger.info("=========>OSS文件上传开始："+file.getName());
         String endpoint=OssConstantConfig.JAVA4ALL_END_POINT;
         String accessKeyId=OssConstantConfig.JAVA4ALL_ACCESS_KEY_ID;
         String accessKeySecret=OssConstantConfig.JAVA4ALL_ACCESS_KEY_SECRET;
         String bucketName=OssConstantConfig.JAVA4ALL_BUCKET_NAME1;
-//        String fileHost=OssConstantConfig.JAVA4ALL_FILE_HOST;
         String fileHost=filePath;
 
         if(null == file){
@@ -54,23 +54,7 @@ public class AliyunOSSUtil {
             ossClient.setBucketAcl(bucketName,CannedAccessControlList.PublicRead);
             if(null != result){
                 logger.info("==========>OSS文件上传成功,OSS地址："+fileUrl);
-                if (isWatermark == true){
-                    logger.info("==========>加水印");
-                    StringBuilder sbStyle = new StringBuilder();
-                    Formatter styleFormatter = new Formatter(sbStyle);
-                    String styleType = "image/watermark,image_Y3p4U3lzdGVtSW1nL3dhdGVybWFyay5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yMA,t_90,g_se,x_10,y_10";
-                    String targetImage = fileUrl;
-                    styleFormatter.format("%s|sys/saveas,o_%s,b_%s", styleType,
-                            BinaryUtil.toBase64String(targetImage.getBytes()),
-                            BinaryUtil.toBase64String(bucketName.getBytes()));
-                    ProcessObjectRequest request = new ProcessObjectRequest(bucketName, fileUrl, sbStyle.toString());
-                    GenericResult processResult = ossClient.processObject(request);
-                    String json = IOUtils.readStreamAsString(processResult.getResponse().getContent(), "UTF-8");
-                    processResult.getResponse().getContent().close();
-                    System.out.println(json);
-                }
-//                return PathEnum.ALIYUN_HEAD_URL.getPath() + fileUrl;
-                return null;
+                return PathEnum.ALIYUN_HEAD_URL.getPath() + fileUrl;
             }
         } catch (OSSException oe) {
             oe.printStackTrace();

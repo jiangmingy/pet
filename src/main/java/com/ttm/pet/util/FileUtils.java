@@ -14,7 +14,7 @@ import java.io.File;
 public class FileUtils {
     private final static Logger logger = LoggerFactory.getLogger(FileUtils.class);
 
-    public static String uploadImg(HttpServletRequest request, String name,String filePath,boolean isWatermark){
+    public static String uploadImg(HttpServletRequest request, String name,String filePath){
         if(! (request instanceof MultipartHttpServletRequest)){
             return "";
         }
@@ -32,7 +32,7 @@ public class FileUtils {
             }
             try {
                 //上传到OSS
-                String uploadUrl = AliyunOSSUtil.upload(mFile,filePath,isWatermark);
+                String uploadUrl = AliyunOSSUtil.upload(mFile,filePath);
                 return uploadUrl+"?"+width+","+height;
             } catch (Exception e) {
                 logger.error("上传到oss错误"+e.getMessage());
@@ -40,19 +40,5 @@ public class FileUtils {
             }
         }
         return "";
-    }
-
-    public static boolean deleteImg(String filename){
-        try {
-            File file = new File(PathEnum.FAILE_PATH.getPath()+"/"+filename);
-            if(file.exists()&&file.isFile()){
-                file.delete();
-            }
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            logger.error("删除文件失败，文件:{}",filename);
-            return false;
-        }
     }
 }
