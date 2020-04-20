@@ -13,7 +13,7 @@
         <result column="gender" property="gender" />
         <result column="age" property="age" />
         <result column="portrait" property="portrait" />
-        <result column="wxUnionId" property="wxUnionId" />
+        <result column="wx_union_id" property="wxUnionId" />
         <result column="profile" property="profile" />
         <result column="back_img" property="backImg" />
         <result column="remark" property="remark" />

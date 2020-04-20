@@ -1,5 +1,6 @@
 package com.ttm.pet.model.dto;
 
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -61,7 +62,6 @@ public class Customer extends Model<Customer> {
     /**
      * 微信编号
      */
-    @TableField("wxUnionId")
     private String wxUnionId;
     /**
      * 简介
@@ -82,6 +82,7 @@ public class Customer extends Model<Customer> {
     /**
      * 是否有效
      */
+    @TableLogic
     private Integer deleted;
 
 

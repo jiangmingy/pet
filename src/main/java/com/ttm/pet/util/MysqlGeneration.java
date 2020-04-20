@@ -18,9 +18,9 @@ public class MysqlGeneration {
     private static final String AUTHOR = "cx";
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/pet?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+    private static final String URL = "jdbc:mysql://47.103.130.165:3306/pet?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
     private static final String USER_NAME = "root";
-        private static final String PASSWORD = "cxcx";
+    private static final String PASSWORD = "192939Aa";
     private static final String PREFIX="t_";                   //table前缀
 
     public static void main(String[] args) {
@@ -57,7 +57,7 @@ public class MysqlGeneration {
                 .setDbColumnUnderline(true)// 全局下划线命名
                 .setTablePrefix(PREFIX)// 此处可以修改为您的表前缀
                 .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
-                .setInclude(new String[] {"t_customer"}) // 需要生成的表
+                .setInclude(new String[] {"t_verification_code"}) // 需要生成的表
                 .setTableFillList(tableFillList)
 //                 .setSuperEntityClass("com.baomidou.demo.common.base.BsBaseEntity")
 //                 .setSuperMapperClass("com.baomidou.demo.common.base.BsBaseMapper")
