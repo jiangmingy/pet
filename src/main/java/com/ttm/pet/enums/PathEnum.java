@@ -1,7 +1,7 @@
 package com.ttm.pet.enums;
 
 public enum PathEnum {
-    ALIYUN_HEAD_URL("https://pet-new.oss-cn-shanghai.aliyuncs.com/"),//回头需要替换为三级域名
+    ALIYUN_HEAD_URL("https://oss.zglele.com/"),
     ADMIN_UPLOAD_PATH("pet_admin"),
     CUSTOMER_UPLOAD_PATH("pet_app");
 
